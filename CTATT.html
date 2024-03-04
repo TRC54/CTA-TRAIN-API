@@ -2,11 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width-device-width,initial.scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CTATT.css">
-    <script src="CTATT.css" defer></script>
-    
+    <title>Anime quote </title>
 </head>
+<div class="headi">
+<h1>Hi this is an anime quote api</h1>
+</div>
+<body>
+    <div id="result"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to make API call and update DOM
+            function fetchData() {
+                fetch('https://animechan.xyz/api/random')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response is very sad rn');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Manipulate DOM with fetched data
+                        const resultDiv = document.getElementById('result');
+                        resultDiv.innerHTML = `<p>Heres your friggin quote: ${JSON.stringify(data)}</p>`;
+                    })
+                    .catch(error => {
+                        console.error('Dawg go back and fix this:', error);
+                    });
+            }
+
+            // Call the function to fetch data when a button is clicked
+            const button = document.createElement('button');
+            button.textContent = 'FRESH QUOTES HERE!!!!!!';
+            button.addEventListener('click', fetchData);
+            document.body.appendChild(button);
+        });
+    </script>
+    <div class="angry">
+        <h2>Tai slaved away at this and feels very tired now :D</h2>
+    </div>
+</body>
+</html>
 
 
 
